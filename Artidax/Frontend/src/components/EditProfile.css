@@ -1,0 +1,128 @@
+/* Stile globale per il corpo della pagina */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff; /* Testo bianco per contrasto sullo sfondo */
+  
+}
+
+/* Stile per il contenitore del profilo */
+.edit-profile-container {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  padding: 20px;
+  
+  background: url('../assets/img/profilobox.jpg') center center/cover no-repeat;
+}
+
+/* Stile per il box del profilo */
+.edit-profile-box {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+  border: 1px solid #ffffff;
+  width: 400px; /* Larghezza del box */
+  text-align: center;
+  animation: fadeInUp 1s ease forwards; /* Animazione di ingresso */
+  width: 500px;
+  margin-left: 60px;
+}
+
+/* Stile per l'intestazione del box */
+.edit-profile-box h2 {
+  margin-bottom: 20px;
+  color: #ffffff;
+  animation: neonGlowWhite 2s alternate infinite ease-in-out; /* Effetto neon bianco pulsante */
+}
+
+/* Stile per il modulo all'interno del box */
+.edit-profile-box .form-control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: black;
+  border: none;
+  
+}
+
+/* Stile per gli elementi del modulo */
+.edit-profile-box .form-control div {
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.edit-profile-box .form-control label {
+  display: block;
+  margin-bottom: 5px;
+  color: #ffffff;
+}
+
+.edit-profile-box .form-control input {
+  width: 100%;
+  border: 1px solid #ffffff; /* Bordi bianchi */
+  border-radius: 10px; /* Bordi arrotondati */
+  background: rgba(0, 0, 0, 0.2); /* Sfondo trasparente per un effetto moderno */
+  color: #ffffff; /* Testo bianco */
+  padding: 10px; /* Padding per gli input */
+}
+
+.edit-profile-box .form-control input::placeholder {
+  color: #ffffff; /* Placeholder bianco */
+  opacity: 1; /* Assicura che il colore sia completamente visibile */
+}
+
+/* Stile per i pulsanti */
+.edit-profile-box button {
+  background: linear-gradient(90deg, #ffffff, #f8f8f8);
+  color: #000000; /* Testo nero per contrasto */
+  border: none;
+  padding: 15px 30px; /* Padding per pulsanti più grandi */
+  border-radius: 10px;
+  margin: 10px; /* Spaziatura tra i pulsanti */
+  transition: background-color 0.3s, box-shadow 0.3s;
+  font-weight: bold;
+}
+
+.edit-profile-box button:hover {
+  background: linear-gradient(90deg, #f8f8f8, #ffffff);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.9), 0 0 40px rgba(255, 255, 255, 0.8); /* Ombra bianca più intensa all'hover */
+}
+
+/* Stile per i messaggi */
+.edit-profile-box .message {
+  margin-top: 15px;
+  color: #ffffff;
+  font-weight: bold;
+  animation: fadeInUp 1s ease forwards;
+}
+
+/* Effetto neon bianco */
+@keyframes neonGlowWhite {
+  from {
+    text-shadow: 0 0 15px #ffffff, 0 0 25px #ffffff, 0 0 35px #ffffff, 0 0 45px #ffffff;
+  }
+  to {
+    text-shadow: 0 0 25px #ffffff, 0 0 35px #ffffff, 0 0 45px #ffffff, 0 0 55px #ffffff;
+  }
+}
+
+/* Animazione di ingresso */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.success-message {
+  color: green; /* Cambia il colore del testo in verde */
+  font-weight: bold; /* Opzionale: per rendere il testo in grassetto */
+  margin-top: 15px;
+}

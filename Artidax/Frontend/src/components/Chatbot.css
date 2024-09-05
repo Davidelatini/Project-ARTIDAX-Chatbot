@@ -1,0 +1,654 @@
+/* Import Google Fonts - Poppins and Material Symbols */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0');
+
+
+
+/* Body Styles */
+body {
+  background-color: #000000; /* Black background */
+  color: #E3E3E3; /* Text color */
+  font-family: 'Poppins', sans-serif;
+  margin: 0; /* Remove default body margin */
+  padding: 0; /* Remove default body padding */
+  height: 100vh; /* Make sure body takes full viewport height */
+
+  display: flex;
+  flex-direction: column; /* Flex layout for full page height */
+
+  overflow-x: hidden; /* Hide horizontal scroll */
+  overflow-y: scroll; /* Allow vertical scrolling but hide the scrollbar */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+  display: none; /* Hide scrollbar */
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+body {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+#nav-column {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+#nav-column::-webkit-scrollbar {
+  display: none; /* Hide scrollbar */
+}
+/* Stile della colonna di navigazione */
+#nav-column {
+  width: 20%;
+  padding: 1rem;
+  border-right: 1px solid #ffffff;
+  background-color: rgba(0, 0, 0, 0.8);
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 100vh; /* Mantiene la barra di navigazione a tutta altezza */
+  flex-shrink: 0; /* Evita che il nav-column si riduca */
+  z-index: 1000;
+  transition: transform 0.3s ease; /* Aggiunge una transizione per mostrare/nascondere */
+}
+@media (max-width: 1200px) {
+  #nav-column {
+    width: 60%; /* Riduce la larghezza della barra di navigazione */
+    position: fixed; /* Imposta posizione fissa per sovrapporla al contenuto */
+    top: 0;
+    left: -60%; /* Nasconde la colonna a sinistra */
+    height: 100%; /* Copre l'intera altezza dello schermo */
+    transform: translateX(-100%); /* Nasconde inizialmente la barra di navigazione */
+  }
+
+  #nav-column.open {
+    transform: translateX(0); /* Mostra la barra di navigazione quando è aperta */
+  }
+
+
+
+  .menu-toggle:hover {
+    background-color: #444; /* Cambia colore al passaggio del mouse */
+  }
+
+  /* Aggiusta i pulsanti interni alla barra di navigazione */
+  #nav-column .butt button {
+    font-size: 0.9rem; /* Riduce leggermente il font per adattarsi meglio */
+    padding: 10px; /* Riduce il padding per adattarlo allo schermo */
+  }
+}
+
+/* Stile per i pulsanti all'interno della colonna di navigazione */
+.butt button{
+ display: flex;
+ flex-direction: row;
+ justify-content: center;
+ align-items: center;
+ text-align: center;
+ width: 100%;
+  margin-bottom: 15px;
+  padding: 12px;
+  background-color: black;
+  color: #ffffff;
+  border: 1px solid #555;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+ 
+}
+.butt button h6{
+margin-left: 5px;
+margin-bottom: 0px;
+  
+ }
+
+.butto{
+display: flex;
+flex-direction: row;
+justify-content: center;
+
+}
+.butto button{
+  border: none;
+  margin-left: 10px;
+  
+  }
+#previous-chats button{
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  font-size: 1.4rem;
+  color: #E3E3E3; /* Text color */
+  align-items: center;
+  justify-content: center;
+  background: #383838; /* Secondary color */
+  transition: 0.2s ease;
+}
+.chat-item{
+  display: flex;
+ justify-content:space-between;
+ align-items: center;
+ text-align: center;
+ margin-bottom: 30px;
+ border: 1px;
+ border-radius: 15px;
+}
+.chat-item.active{
+  display: flex;
+ justify-content:space-between;
+ align-items: center;
+ text-align: center;
+ border: 1px solid white;
+ border-radius: 15px;
+ width: 100%;
+ padding: 10px;
+  
+}
+/* Stile del pulsante per aprire il menu utente */
+.user-menu-toggle {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  cursor: pointer;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  font-size: 1.4rem;
+  color: #E3E3E3; /* Text color */
+  align-items: center;
+  justify-content: center;
+  background: #383838; /* Secondary color */
+  transition: 0.2s ease;
+  transition: 0.2s ease;
+  position: absolute;
+  margin-right: 30px;
+  top: 20px; /* Posiziona il pulsante in alto a destra della pagina */
+  right: 20px;
+  z-index: 1000; /* Garantisce che il pulsante sia al di sopra degli altri elementi */
+}
+
+/* Stili del menu a tendina dell'utente */
+.user-menu {
+  display: flex;
+  flex-direction: column;
+  margin-right: 30px;
+  position: absolute; /* Posizione assoluta rispetto al pulsante */
+  top: 80px; /* Posiziona il menu sotto il pulsante */
+  right: 20px; /* Allinea il menu con il pulsante */
+  background-color: #444; /* Sfondo del menu */
+  border: 1px solid #444;
+  border-radius: 10px;
+  z-index: 2000; /* Garantisce che il menu sia al di sopra di tutti gli altri elementi */
+  padding: 0.5rem;
+  width: 190px; /* Larghezza adeguata per contenere i pulsanti */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Ombra per migliorare la visibilità del menu */
+}
+
+/* Stili dei pulsanti nel menu a tendina */
+.user-menu button {
+  background-color: #666;
+  color: #E3E3E3;
+  border: 1px gray;
+  border-radius: 20px;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+}
+
+/* Chatbot Main Container */
+.Chatbots {
+  background-color: #000000;
+  display: flex;
+  flex-direction: row; /* Organizza gli elementi verticalmente */
+  height: 100vh; /* Imposta l'altezza del contenitore principale a quella della viewport */
+}
+.chat-content {
+  width: 100%; /* Larghezza della sidebar */
+  background-color: #000000; /* Colore di sfondo della sidebar */
+  color: #E3E3E3; /* Colore del testo */
+  padding: 1rem; /* Spaziatura interna */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem; /* Spaziatura tra gli elementi */
+}
+.Chatbots .headers, 
+.Chatbots .chat-list .message, 
+.Chatbots .typing-form {
+  margin: 0 auto;
+  max-width: 980px;
+  background-color: #000000;
+}
+
+/* Headers Section */
+.Chatbots .headers {
+  margin-top: 3vh;
+  padding: 0rem;
+  overflow-x: hidden;
+}
+
+/* Header Hidden State */
+body.hide-header .Chatbots .headers {
+  margin: 0;
+  display: none;
+}
+
+/* Header Title and Subtitle */
+.Chatbots .headers .title, 
+.Chatbots .headers .subtitle {
+  color: #E3E3E3; /* Text color */
+  font-weight: 500;
+  line-height: 4rem;
+}
+
+/* Title Gradient Style */
+.Chatbots .headers .title {
+  width: fit-content;
+  font-size: 3rem;
+  background-clip: text;
+  background: linear-gradient(to right, #4285f4, #d96570);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Subtitle Style */
+.Chatbots .headers .subtitle {
+  font-size: 2.6rem;
+  color: #828282; /* Subheading color */
+}
+
+/* Suggestion List Container */
+.Chatbots .suggestion-list {
+  width: 100%;
+  list-style: none;
+  display: flex;
+  gap: 1.25rem;
+  margin-top: 9.5vh;
+  overflow: hidden;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+/* Suggestion Item */
+.Chatbots .suggestion-list .suggestion {
+  cursor: pointer;
+  padding: 1.25rem;
+  width: 222px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  border-radius: 0.75rem;
+  justify-content: space-between;
+  background: #383838; /* Secondary color */
+  transition: 0.2s ease;
+}
+
+.suggestion h4 {
+  font-size: medium;
+}
+
+/* Suggestion Hover Effect */
+.Chatbots .suggestion-list .suggestion:hover {
+  background: #444; /* Secondary hover color */
+}
+
+/* Suggestion Text and Icon */
+.Chatbots .suggestion-list .suggestion .text, 
+.Chatbots .suggestion-list .suggestion .icon {
+  font-weight: 400;
+  color: #E3E3E3; /* Text color */
+}
+
+/* Suggestion Icon Style */
+.Chatbots .suggestion-list .suggestion .icon {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  font-size: 1.3rem;
+  margin-top: 2.5rem;
+  align-self: flex-end;
+  align-items: center;
+  border-radius: 50%;
+  justify-content: center;
+  color: #E3E3E3; /* Text color */
+  background: #000000; /* Primary color */
+}
+
+/* Chat List Styles */
+.Chatbots .chat-list {
+  width: 100%;
+  padding: 1rem;
+  flex-grow: 1; /* Permette alla lista delle chat di espandersi e riempire lo spazio disponibile */
+  overflow-y: auto; /* Permette lo scroll verticale */
+  background-color: #000000;
+  scrollbar-color: #999 transparent; /* Colore dello scrollbar */
+  overflow-x: hidden; /* Nasconde lo scroll orizzontale */
+}
+
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.chat-list::-webkit-scrollbar {
+display: none; /* Hide scrollbar */
+}
+/* Incoming Message Style */
+.Chatbots .chat-list .message.incoming {
+  margin-top: 1.5rem;
+}
+
+/* Message Content Style */
+.Chatbots .chat-list .message-content {
+  margin-top: 20px;
+  
+}
+.Chatbots .chat-list  .user .message-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  text-align: center;
+  gap: 1.5rem;
+  width: 100%;
+  align-items: center;
+  
+  border-radius: 20px;
+  padding: 20px;
+  
+}
+.Chatbots .chat-list  .user .message-content .text {
+  margin-right:50px;
+  margin-bottom: 0px;
+
+  
+}
+.Chatbots .chat-list .bot .message-content .text {
+  text-align: left; /* Imposta allineamento a sinistra */
+}
+
+.Chatbots .chat-list .bot .message-content ul, 
+.Chatbots .chat-list .bot .message-content ol {
+  margin: 0;
+  padding-left: 20px; /* Sposta il contenuto della lista leggermente a destra */
+  text-align: left; /* Assicurati che il testo della lista sia allineato a sinistra */
+}
+
+
+.Chatbots .chat-list .bot .message-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  text-align: center;
+  gap: 1.5rem;
+  width: 100%;
+  align-items: center;
+  background-color: black;
+  padding: 20px;
+  border: 1px gray solid; /* Specifica lo spessore del bordo */
+  border-radius: 40px;
+  
+  
+}
+
+.Chatbots .chat-list  .bot .message-content .avatar {
+ 
+  margin-bottom: 0px;
+  
+}
+.Chatbots .chat-list  .bot .message-content .text {
+
+  margin-bottom: 0px;
+  
+}
+
+/* Message Text Style */
+.Chatbots .chat-list .message .text {
+  color: #E3E3E3; /* Text color */
+  white-space: pre-wrap;
+  margin-bottom: 40px;
+}
+
+/* Error Message Text Style */
+.Chatbots .chat-list .message.error .text {
+  color: #e55865; /* Error text color */
+}
+
+/* Loading Message Text Hidden */
+.Chatbots .chat-list .message.loading .text {
+  display: none;
+}
+
+/* Avatar Styles */
+.Chatbots .chat-list .message .avatar {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  align-self: flex-start;
+}
+
+/* Loading Avatar Animation */
+.Chatbots .chat-list .message.loading .avatar {
+  animation: rotate 3s linear infinite;
+}
+
+
+
+/* Dots Animation Container */
+.Chatbots .chat-list .message .dots-container {
+  display: flex;
+  gap: 0.2rem;
+  align-items: center;
+}
+
+/* Dot Style and Animation */
+.Chatbots .chat-list .message .dot {
+  width: 8px;
+  height: 8px;
+  background-color: #5088D3; /* Dot color */
+  border-radius: 50%;
+  animation: dot-blink 1.4s infinite both; /* Blink animation for dots */
+}
+
+/* Dots Animation Delay */
+.Chatbots .chat-list .message .dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.Chatbots .chat-list .message .dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+
+
+
+
+/* Typing Area Styles */
+/* Typing Area Styles */
+.Chatbots .typing-area {
+  width: 100%;
+  background-color: #000000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  z-index: 1000;
+ 
+  
+}
+
+
+
+/* Typing Form and Action Buttons */
+.Chatbots .typing-area .typing-form {
+  display: flex;
+  gap: 0.75rem;
+  width: 100%; /* Full width for typing area */
+  
+  align-items: center;
+  justify-content: center; /* Center content horizontally */
+  margin-bottom: 0; /* Remove margin to keep elements close */
+}
+
+.Chatbots .typing-area .action-buttons {
+  display: flex;
+  gap: 0; /* No gap to keep elements close */
+  align-items: center;
+}
+.Chatbots .typing-area .action-buttons .icon{
+  margin-left: 5px;
+}
+
+/* Input Wrapper Style */
+.Chatbots .typing-form .input-wrapper {
+  width: 100%;
+  height: 56px;
+  display: flex;
+  position: relative;
+  align-items: center; /* Center input vertically */
+  margin-right: 0; /* Remove any right margin */
+}
+
+/* Typing Input Styles */
+.Chatbots .typing-form .typing-input {
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  resize: none;
+  font-size: 1rem;
+  color: #E3E3E3; /* Text color */
+  padding: 1.1rem 4rem 1.1rem 1.5rem;
+  border-radius: 100px;
+  background: #383838; /* Secondary color */
+}
+
+/* Typing Input Focus State */
+.Chatbots .typing-form .typing-input:focus {
+  background: #444; /* Secondary hover color */
+}
+
+/* Typing Input Placeholder Color */
+.Chatbots .typing-form .typing-input::placeholder {
+  color: #A6A6A6; /* Placeholder color */
+}
+
+/* Icon Button in Typing Area */
+.Chatbots .typing-area .icon {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  font-size: 1.4rem;
+  color: #E3E3E3; /* Text color */
+  align-items: center;
+  justify-content: center;
+  background: #383838; /* Secondary color */
+  transition: 0.2s ease;
+}
+
+/* Icon Hover Effect */
+.Chatbots .typing-area .icon:hover {
+  background: #444; /* Secondary hover color */
+}
+
+/* Send Message Button */
+.Chatbots .typing-form #send-message-button {
+  position: absolute;
+  right: 0;
+  outline: none;
+  border: none;
+  transform: scale(0);
+  background: transparent;
+  transition: transform 0.2s ease;
+}
+
+/* Send Button Visible on Valid Input */
+.Chatbots .typing-form .typing-input:valid ~ #send-message-button {
+  transform: scale(1);
+}
+
+/* Disclaimer Text in Typing Area */
+.Chatbots .typing-area .disclaimer-text {
+  font-size: 0.85rem;
+  color: #A6A6A6; /* Placeholder color */
+  margin-top: 0.5rem; /* Adjust margin to create space between typing form and text */
+  text-align: center;
+}
+
+/* Responsive Media Query for Small Screens */
+@media (max-width: 768px) {
+  .Chatbot .header .title,
+  .Chatbot .header .subtitle {
+    font-size: 2rem;
+    line-height: 2.6rem;
+  }
+
+  .Chatbot .header .subtitle {
+    font-size: 1.7rem;
+  }
+
+  .Chatbot .typing-area .typing-form,
+  .Chatbot .typing-area .action-buttons {
+    gap: 0.4rem;
+  }
+
+  .Chatbot .typing-form .input-wrapper {
+    height: 50px;
+  }
+
+  .Chatbot .typing-form .typing-input {
+    padding: 1.1rem 3.5rem 1.1rem 1.2rem;
+  }
+
+  .Chatbot .typing-area .icon {
+    height: 50px;
+    width: 50px;
+  }
+
+  .Chatbot .typing-area .disclaimer-text {
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+  }
+  
+}
+
+/* Definizione dei Keyframes per l'animazione */
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dot-blink {
+  0%, 80%, 100% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+}
+
+/* Animazione di rotazione per .loading-icon */
+.loading-icon {
+  animation: spin 1s linear infinite; /* Usa 'spin' invece di 'rotate' */
+}
+
+/* Definizione dei Keyframes per 'spin' */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+

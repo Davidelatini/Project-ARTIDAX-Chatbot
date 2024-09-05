@@ -1,0 +1,39 @@
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff; /* Testo bianco per contrasto sullo sfondo */
+    
+  }
+  
+  /* Stile per il contenitore del profilo */
+  .delete-account-container {
+    display: flex;
+    
+    justify-content: left;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    padding: 20px;
+    
+    background: url('../assets/img/profilobox.jpg') center center/cover no-repeat;
+  }
+  .deleted{
+    background-color: #000000;
+    border: 1px solid white;
+    padding: 20px;
+    border-radius: 40px;
+  }
+  .deleted button{
+    background: linear-gradient(90deg, #ffffff, #f8f8f8);
+    color: #000000; /* Testo nero per contrasto */
+    border: none;
+    padding: 15px 30px; /* Padding per pulsanti più grandi */
+    border-radius: 10px;
+    margin: 10px; /* Spaziatura tra i pulsanti */
+    transition: background-color 0.3s, box-shadow 0.3s;
+    font-weight: bold;
+  }
+  .deleted button:hover {
+    background: linear-gradient(90deg, #f8f8f8, #ffffff);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.9), 0 0 40px rgba(255, 255, 255, 0.8); /* Ombra bianca più intensa all'hover */
+  }
